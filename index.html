@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- Webseite als Web-App anzeigen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Statusleiste in Schwarz -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="apple-mobile-web-app-title" content="Astronauten-Spiel">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon-16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <title>Astronauten-Spiel</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-image: url('space-background.jpg'); /* Hintergrundbild des Weltraums */
+            background-size: cover;
+        }
+        #controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none; /* Standardmäßig ausblenden */
+            gap: 10px;
+        }
+        #controls button {
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+        }
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Standard */
+        }
+        @media (pointer: coarse) {
+            #controls {
+                display: flex; /* Auf Touch-Geräten anzeigen */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--
+        Sounds:
+
+            hvrl.wav by inferno -- https://freesound.org/s/18380/ -- License: Sampling+
+            OKAY! by Scrampunk -- https://freesound.org/s/345299/ -- License: Attribution 4.0
+            game over sound (i think) by ro1qa -- https://freesound.org/s/584336/ -- License: Creative Commons 0
+    -->
+
+    <div id="controls">
+        <button id="upButton">⬆️</button>
+        <button id="leftButton">⬅️</button>
+        <button id="downButton">⬇️</button>
+        <button id="rightButton">➡️</button>
+    </div>
+    <audio id="winSound" src="win.mp3"></audio>
+    <audio id="loseSound" src="lose.mp3"></audio>
+    <audio id="thrustSound" src="thrust.mp3" loop></audio>
+    <canvas id="gameCanvas"></canvas>
+    <script src="game.js"></script>
+</body>
+</html>
